@@ -1,24 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="title" id="BYZ-38-t0r" customClass="ViewController" customModule="Bouken" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrA-c2-Zo0">
+                                <rect key="frame" x="59" y="574.33333333333337" width="275.33333333333331" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="冒険をはじめる">
+                                    <fontDescription key="titleFontDescription" name="JF-Dot-k12x10" family="JF Dot k12x10" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lRO-X5-Ftn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NrA-c2-Zo0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.4" id="B8n-fw-N5j"/>
+                            <constraint firstItem="NrA-c2-Zo0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QpT-SC-Z6D"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startButton" destination="NrA-c2-Zo0" id="XF5-Bq-fF6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="102" y="4"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="yYB-Oi-ZJv">
+            <objects>
+                <viewController storyboardIdentifier="main" id="oGj-9l-uUU" customClass="MainViewController" customModule="Bouken" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PFa-kd-wjI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOv-3r-AUH">
+                                <rect key="frame" x="0.0" y="58.999999999999986" width="393" height="170.66666666666663"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCU-sD-xk8" customClass="GaugeView" customModule="Bouken" customModuleProvider="target">
+                                        <rect key="frame" x="39.333333333333343" y="123.66666666666667" width="314.33333333333326" height="25.666666666666671"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="gageColor">
+                                                <color key="value" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="WCU-sD-xk8" firstAttribute="width" secondItem="yOv-3r-AUH" secondAttribute="width" multiplier="0.8" id="4LQ-tI-KHY"/>
+                                    <constraint firstItem="WCU-sD-xk8" firstAttribute="centerX" secondItem="yOv-3r-AUH" secondAttribute="centerX" id="Bfg-Yg-L2T"/>
+                                    <constraint firstItem="WCU-sD-xk8" firstAttribute="centerY" secondItem="yOv-3r-AUH" secondAttribute="centerY" multiplier="1.6" id="R2b-Fn-gxw"/>
+                                    <constraint firstItem="WCU-sD-xk8" firstAttribute="height" secondItem="yOv-3r-AUH" secondAttribute="height" multiplier="0.15" id="pQf-uQ-EVb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LU2-xi-CSr" customClass="DisplayView" customModule="Bouken" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="229.66666666666663" width="393" height="393"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LU2-xi-CSr" secondAttribute="height" multiplier="1:1" id="D4I-g1-g5f"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9r-nI-tyr">
+                                <rect key="frame" x="0.0" y="622.66666666666663" width="393" height="195.33333333333337"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tth-fg-0aR" customClass="Button" customModule="Bouken" customModuleProvider="target">
+                                        <rect key="frame" x="216" y="38.999999999999993" width="157.33333333333337" height="117.33333333333331"/>
+                                        <color key="backgroundColor" red="1" green="0.24953507529999999" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="攻撃する">
+                                            <fontDescription key="titleFontDescription" name="JF-Dot-k12x10" family="JF Dot k12x10" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-KA-jzZ" customClass="Button" customModule="Bouken" customModuleProvider="target">
+                                        <rect key="frame" x="19.666666666666671" y="38.999999999999993" width="157.33333333333331" height="117.33333333333331"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="逃げる">
+                                            <fontDescription key="titleFontDescription" name="JF-Dot-k12x10" family="JF Dot k12x10" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Rn5-KA-jzZ" firstAttribute="height" secondItem="f9r-nI-tyr" secondAttribute="height" multiplier="0.6" id="A7u-oy-7Pg"/>
+                                    <constraint firstItem="Tth-fg-0aR" firstAttribute="centerX" secondItem="f9r-nI-tyr" secondAttribute="centerX" multiplier="1.5" id="OJj-E1-gTt"/>
+                                    <constraint firstItem="Rn5-KA-jzZ" firstAttribute="centerX" secondItem="f9r-nI-tyr" secondAttribute="centerX" multiplier="0.5" id="YYx-nP-ePh"/>
+                                    <constraint firstItem="Rn5-KA-jzZ" firstAttribute="width" secondItem="f9r-nI-tyr" secondAttribute="width" multiplier="0.4" id="Z9F-9M-9KI"/>
+                                    <constraint firstItem="Tth-fg-0aR" firstAttribute="height" secondItem="f9r-nI-tyr" secondAttribute="height" multiplier="0.6" id="krM-Fx-qHd"/>
+                                    <constraint firstItem="Rn5-KA-jzZ" firstAttribute="centerY" secondItem="f9r-nI-tyr" secondAttribute="centerY" id="mZF-gU-tJg"/>
+                                    <constraint firstItem="Tth-fg-0aR" firstAttribute="centerY" secondItem="f9r-nI-tyr" secondAttribute="centerY" id="q64-eh-eoe"/>
+                                    <constraint firstItem="Tth-fg-0aR" firstAttribute="width" secondItem="f9r-nI-tyr" secondAttribute="width" multiplier="0.4" id="rYp-2Y-Mzx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mA3-o4-VPw"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LU2-xi-CSr" firstAttribute="centerX" secondItem="PFa-kd-wjI" secondAttribute="centerX" id="1Br-Rp-oA5"/>
+                            <constraint firstItem="yOv-3r-AUH" firstAttribute="leading" secondItem="mA3-o4-VPw" secondAttribute="leading" id="45E-aP-LKF"/>
+                            <constraint firstItem="f9r-nI-tyr" firstAttribute="leading" secondItem="mA3-o4-VPw" secondAttribute="leading" id="6KH-kx-dGB"/>
+                            <constraint firstItem="yOv-3r-AUH" firstAttribute="top" secondItem="mA3-o4-VPw" secondAttribute="top" id="82O-Rj-tbw"/>
+                            <constraint firstItem="mA3-o4-VPw" firstAttribute="bottom" secondItem="f9r-nI-tyr" secondAttribute="bottom" id="GxY-D7-klo"/>
+                            <constraint firstItem="mA3-o4-VPw" firstAttribute="trailing" secondItem="LU2-xi-CSr" secondAttribute="trailing" id="Piy-B1-SlD"/>
+                            <constraint firstItem="LU2-xi-CSr" firstAttribute="centerY" secondItem="PFa-kd-wjI" secondAttribute="centerY" id="SBj-7D-QUf"/>
+                            <constraint firstItem="LU2-xi-CSr" firstAttribute="leading" secondItem="mA3-o4-VPw" secondAttribute="leading" id="WDE-YH-6GA"/>
+                            <constraint firstItem="mA3-o4-VPw" firstAttribute="trailing" secondItem="f9r-nI-tyr" secondAttribute="trailing" id="edc-Dk-OKG"/>
+                            <constraint firstItem="mA3-o4-VPw" firstAttribute="trailing" secondItem="yOv-3r-AUH" secondAttribute="trailing" id="ery-Aw-532"/>
+                            <constraint firstItem="f9r-nI-tyr" firstAttribute="top" secondItem="LU2-xi-CSr" secondAttribute="bottom" id="itR-iS-UdT"/>
+                            <constraint firstItem="LU2-xi-CSr" firstAttribute="top" secondItem="yOv-3r-AUH" secondAttribute="bottom" id="vJE-i7-SoM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GtF-Mz-gHm"/>
+                    <connections>
+                        <outlet property="atttackButton" destination="Tth-fg-0aR" id="cCY-Jg-kWM"/>
+                        <outlet property="displayView" destination="LU2-xi-CSr" id="GcT-7y-w41"/>
+                        <outlet property="escapeButton" destination="Rn5-KA-jzZ" id="xIc-ao-Tkc"/>
+                        <outlet property="gaugeView" destination="WCU-sD-xk8" id="QUx-Jk-sgS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c4K-fj-2Ox" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="811" y="4"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Rn5-KA-jzZ">
+            <size key="intrinsicContentSize" width="96" height="34"/>
+        </designable>
+        <designable name="Tth-fg-0aR">
+            <size key="intrinsicContentSize" width="119.66666666666667" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -13,6 +13,28 @@
 		F6A02FC92AE916920008AF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6A02FC72AE916920008AF32 /* Main.storyboard */; };
 		F6A02FCB2AE916960008AF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6A02FCA2AE916960008AF32 /* Assets.xcassets */; };
 		F6A02FCE2AE916960008AF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6A02FCC2AE916960008AF32 /* LaunchScreen.storyboard */; };
+		F6A02FD62AE916F10008AF32 /* JF-Dot-k12x10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A02FD52AE916F00008AF32 /* JF-Dot-k12x10.ttf */; };
+		F6A02FD82AE917FD0008AF32 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A02FD72AE917FD0008AF32 /* MainViewController.swift */; };
+		F6A02FDA2AE91F2B0008AF32 /* DisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A02FD92AE91F2B0008AF32 /* DisplayView.xib */; };
+		F6A02FDC2AE921630008AF32 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A02FDB2AE921630008AF32 /* DisplayView.swift */; };
+		F6AEF0882AF54CE600C44ECB /* MonsterData.csv in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0872AF54CE500C44ECB /* MonsterData.csv */; };
+		F6B7A4B12AE9888A004F6A0F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B02AE9888A004F6A0F /* Button.swift */; };
+		F6B7A4B32AE988FD004F6A0F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B22AE988FD004F6A0F /* TextButton.swift */; };
+		F6B7A4B52AEAC977004F6A0F /* TextButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B42AEAC977004F6A0F /* TextButtonProtocol.swift */; };
+		F6B7A4B92AEACF2A004F6A0F /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B82AEACF2A004F6A0F /* ViewProtocol.swift */; };
+		F6B7A4BB2AEB4026004F6A0F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4BA2AEB4026004F6A0F /* GameView.swift */; };
+		F6B7A4BD2AEB4080004F6A0F /* GameViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4BC2AEB4080004F6A0F /* GameViewProtocol.swift */; };
+		F6B7A4BF2AEB41D9004F6A0F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4BE2AEB41D9004F6A0F /* Event.swift */; };
+		F6B7A4C12AEB4262004F6A0F /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4C02AEB4262004F6A0F /* EventType.swift */; };
+		F6B7A4C72AEB94AA004F6A0F /* TextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4C62AEB94AA004F6A0F /* TextData.swift */; };
+		F6B7A4C92AEB9625004F6A0F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4C82AEB9625004F6A0F /* Player.swift */; };
+		F6B7A4CB2AEB963F004F6A0F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4CA2AEB963F004F6A0F /* Model.swift */; };
+		F6B7A4D52AEEADCB004F6A0F /* MonsterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4D42AEEADCB004F6A0F /* MonsterData.swift */; };
+		F6B7A4D72AEEAFE0004F6A0F /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4D62AEEAFE0004F6A0F /* Monster.swift */; };
+		F6B7A4D92AEEB0C1004F6A0F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4D82AEEB0C1004F6A0F /* ProfileData.swift */; };
+		F6B7A4DB2AEF8E2F004F6A0F /* EventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4DA2AEF8E2F004F6A0F /* EventProtocol.swift */; };
+		F6B7A4DF2AF3F5E2004F6A0F /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4DE2AF3F5E2004F6A0F /* GaugeView.swift */; };
+		F6B7A4E12AF3FC18004F6A0F /* GaugeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4E02AF3FC18004F6A0F /* GaugeViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +46,28 @@
 		F6A02FCA2AE916960008AF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6A02FCD2AE916960008AF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6A02FCF2AE916960008AF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6A02FD52AE916F00008AF32 /* JF-Dot-k12x10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JF-Dot-k12x10.ttf"; sourceTree = "<group>"; };
+		F6A02FD72AE917FD0008AF32 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F6A02FD92AE91F2B0008AF32 /* DisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayView.xib; sourceTree = "<group>"; };
+		F6A02FDB2AE921630008AF32 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		F6AEF0872AF54CE500C44ECB /* MonsterData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MonsterData.csv; sourceTree = "<group>"; };
+		F6B7A4B02AE9888A004F6A0F /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F6B7A4B22AE988FD004F6A0F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		F6B7A4B42AEAC977004F6A0F /* TextButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonProtocol.swift; sourceTree = "<group>"; };
+		F6B7A4B82AEACF2A004F6A0F /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		F6B7A4BA2AEB4026004F6A0F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		F6B7A4BC2AEB4080004F6A0F /* GameViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewProtocol.swift; sourceTree = "<group>"; };
+		F6B7A4BE2AEB41D9004F6A0F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		F6B7A4C02AEB4262004F6A0F /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		F6B7A4C62AEB94AA004F6A0F /* TextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextData.swift; sourceTree = "<group>"; };
+		F6B7A4C82AEB9625004F6A0F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F6B7A4CA2AEB963F004F6A0F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F6B7A4D42AEEADCB004F6A0F /* MonsterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterData.swift; sourceTree = "<group>"; };
+		F6B7A4D62AEEAFE0004F6A0F /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		F6B7A4D82AEEB0C1004F6A0F /* ProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		F6B7A4DA2AEF8E2F004F6A0F /* EventProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocol.swift; sourceTree = "<group>"; };
+		F6B7A4DE2AF3F5E2004F6A0F /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
+		F6B7A4E02AF3FC18004F6A0F /* GaugeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +107,28 @@
 				F6A02FCA2AE916960008AF32 /* Assets.xcassets */,
 				F6A02FCC2AE916960008AF32 /* LaunchScreen.storyboard */,
 				F6A02FCF2AE916960008AF32 /* Info.plist */,
+				F6A02FD52AE916F00008AF32 /* JF-Dot-k12x10.ttf */,
+				F6A02FD72AE917FD0008AF32 /* MainViewController.swift */,
+				F6A02FD92AE91F2B0008AF32 /* DisplayView.xib */,
+				F6A02FDB2AE921630008AF32 /* DisplayView.swift */,
+				F6B7A4B02AE9888A004F6A0F /* Button.swift */,
+				F6B7A4B22AE988FD004F6A0F /* TextButton.swift */,
+				F6B7A4B42AEAC977004F6A0F /* TextButtonProtocol.swift */,
+				F6B7A4B82AEACF2A004F6A0F /* ViewProtocol.swift */,
+				F6B7A4BA2AEB4026004F6A0F /* GameView.swift */,
+				F6B7A4BC2AEB4080004F6A0F /* GameViewProtocol.swift */,
+				F6B7A4BE2AEB41D9004F6A0F /* Event.swift */,
+				F6B7A4C02AEB4262004F6A0F /* EventType.swift */,
+				F6B7A4C62AEB94AA004F6A0F /* TextData.swift */,
+				F6B7A4C82AEB9625004F6A0F /* Player.swift */,
+				F6B7A4CA2AEB963F004F6A0F /* Model.swift */,
+				F6B7A4D42AEEADCB004F6A0F /* MonsterData.swift */,
+				F6B7A4D62AEEAFE0004F6A0F /* Monster.swift */,
+				F6B7A4D82AEEB0C1004F6A0F /* ProfileData.swift */,
+				F6B7A4DA2AEF8E2F004F6A0F /* EventProtocol.swift */,
+				F6B7A4DE2AF3F5E2004F6A0F /* GaugeView.swift */,
+				F6B7A4E02AF3FC18004F6A0F /* GaugeViewProtocol.swift */,
+				F6AEF0872AF54CE500C44ECB /* MonsterData.csv */,
 			);
 			path = Bouken;
 			sourceTree = "<group>";
@@ -126,6 +192,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6A02FCE2AE916960008AF32 /* LaunchScreen.storyboard in Resources */,
+				F6A02FD62AE916F10008AF32 /* JF-Dot-k12x10.ttf in Resources */,
+				F6A02FDA2AE91F2B0008AF32 /* DisplayView.xib in Resources */,
+				F6AEF0882AF54CE600C44ECB /* MonsterData.csv in Resources */,
 				F6A02FCB2AE916960008AF32 /* Assets.xcassets in Resources */,
 				F6A02FC92AE916920008AF32 /* Main.storyboard in Resources */,
 			);
@@ -138,9 +207,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6B7A4C12AEB4262004F6A0F /* EventType.swift in Sources */,
 				F6A02FC62AE916920008AF32 /* ViewController.swift in Sources */,
+				F6B7A4B12AE9888A004F6A0F /* Button.swift in Sources */,
+				F6B7A4B32AE988FD004F6A0F /* TextButton.swift in Sources */,
+				F6B7A4BD2AEB4080004F6A0F /* GameViewProtocol.swift in Sources */,
 				F6A02FC22AE916920008AF32 /* AppDelegate.swift in Sources */,
+				F6B7A4E12AF3FC18004F6A0F /* GaugeViewProtocol.swift in Sources */,
+				F6B7A4BB2AEB4026004F6A0F /* GameView.swift in Sources */,
 				F6A02FC42AE916920008AF32 /* SceneDelegate.swift in Sources */,
+				F6B7A4C72AEB94AA004F6A0F /* TextData.swift in Sources */,
+				F6B7A4B92AEACF2A004F6A0F /* ViewProtocol.swift in Sources */,
+				F6B7A4D72AEEAFE0004F6A0F /* Monster.swift in Sources */,
+				F6A02FDC2AE921630008AF32 /* DisplayView.swift in Sources */,
+				F6B7A4D52AEEADCB004F6A0F /* MonsterData.swift in Sources */,
+				F6B7A4DF2AF3F5E2004F6A0F /* GaugeView.swift in Sources */,
+				F6B7A4B52AEAC977004F6A0F /* TextButtonProtocol.swift in Sources */,
+				F6A02FD82AE917FD0008AF32 /* MainViewController.swift in Sources */,
+				F6B7A4CB2AEB963F004F6A0F /* Model.swift in Sources */,
+				F6B7A4C92AEB9625004F6A0F /* Player.swift in Sources */,
+				F6B7A4D92AEEB0C1004F6A0F /* ProfileData.swift in Sources */,
+				F6B7A4DB2AEF8E2F004F6A0F /* EventProtocol.swift in Sources */,
+				F6B7A4BF2AEB41D9004F6A0F /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
