@@ -12,5 +12,6 @@ protocol EventProtocol {
     func getMonsterName() -> String
     func getPlayer() -> Player
     func getMonster() -> Monster
+    func setPlayer(player: Player)
     func setMonster(monster: Monster)
 }

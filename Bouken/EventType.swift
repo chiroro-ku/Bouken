@@ -14,6 +14,7 @@ indirect enum EventType{
     case system(EventType)
     
     case first
+    case last
     
     case player(EventType)
     case monster(EventType)
@@ -22,5 +23,8 @@ indirect enum EventType{
     case escape
     case respawn
     case death
+    
+    case animate(EventType)
+    case no
     
 }

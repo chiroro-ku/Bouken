@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol TextButtonProtocol {
-    func nextText() -> String?
+    func textButtonTapped()
 }

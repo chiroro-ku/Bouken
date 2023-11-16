@@ -11,7 +11,7 @@ class Event{
     
     private var monsterData: MonsterData = MonsterData()
     private var textData: TextData = TextData()
-    private var textList: [String] = []
+    private var textList: GameText = GameText()
     private var eventList: [EventType] = []
     
     var delegate: EventProtocol? {
@@ -33,43 +33,41 @@ class Event{
         return self.eventList.removeFirst()
     }
     
-    func getText() -> String{
+    func getGameText() -> GameText{
         self.textListLoad()
-        return self.textList.removeFirst()
+        return self.textList.getGameText()
     }
     
     func textListLoad() {
-//        self.printData()
-        if !self.textList.isEmpty {
+        self.printData()
+        if !self.textList.isEmpty() {
             return
         }
         let eventType = self.getEvent()
-        switch eventType{
+        switch eventType {
         case .system(.first):
-            self.textList += self.textData.getFirstTextList()
+            self.textList = self.textData.getTextList(eventType: eventType)
             self.append(event: .monster(.respawn))
             break
         case .monster(.respawn):
-            let monster = self.respawnMonster()
-            self.delegate?.setMonster(monster: monster)
-            self.textList += self.textData.getMonsterRespawnTextList()
+            self.respawnMonster()
+            
+            self.textList = self.textData.getTextList(eventType: eventType)
             break
         case .monster(.attack):
-            self.textList += self.textData.getMonsterAttackTextList()
-            guard let delegate = self.delegate else {
-                return
-            }
-            let monster = delegate.getMonster()
-            let damage = monster.getDamege()
-            self.playerReceiveDamage(value: damage)
+            self.playerReceiveDamage()
+            
+            self.textList = self.textData.getTextList(eventType: eventType)
             self.append(event: .monster(.respawn))
             break
         case .monster(.death):
-            self.textList += self.textData.getMonsterDeathTextList()
+            self.playerLevelUp()
+            
+            self.textList = self.textData.getTextList(eventType: eventType)
             self.append(event: .monster(.respawn))
             break
         case .player(.attack):
-            self.textList += self.textData.getAttackTextList()
+            self.textList = self.textData.getTextList(eventType: eventType)
             guard let bool = self.isPlayerAttack() else {
                 return
             }
@@ -77,29 +75,36 @@ class Event{
             self.append(event: event)
             break
         case .player(.escape):
-            self.textList += self.textData.getEscapeTextList()
             self.playerEscape()
+            
+            self.textList = self.textData.getTextList(eventType: eventType)
             self.append(event: .monster(.respawn))
             break
         case .player(.death):
-            self.textList += self.textData.getPlayerDeath()
+            self.textList = self.textData.getTextList(eventType: eventType)
+            break
+        case .system(.last):
+            self.textList = self.textData.getTextList(eventType: eventType)
             break
         default:
             break
         }
-        
     }
     
     func isEmpty() -> Bool {
-        return self.textList.isEmpty && self.eventList.isEmpty
+        return self.textList.isEmpty() && self.eventList.isEmpty
     }
     
-    func respawnMonster() -> Monster{
-        return self.monsterData.getRandomMonster()
+    func respawnMonster() {
+        let monster = self.monsterData.getRandomMonster()
+        guard let delegate = self.delegate else {
+            return
+        }
+        delegate.setMonster(monster: monster)
     }
     
     func printData(){
-        Swift.print(self.textList)
+        Swift.print(self.textList.getTextList())
         Swift.print(self.eventList)
     }
     
@@ -118,18 +123,35 @@ class Event{
         return bool
     }
     
-    private func playerReceiveDamage(value: Int) {
+    private func playerReceiveDamage(escape: Bool = false) {
         guard let delegate = self.delegate else {
             return
         }
-
-        if delegate.getPlayer().receiveDamage(value: value) {
-            self.append(event: .player(.death))
+        let player = delegate.getPlayer()
+        if escape{
+            player.escape()
+        }else{
+            let monster = delegate.getMonster()
+            let damege = monster.getDamege()
+            player.receiveDamage(value: damege)
         }
-        Swift.print(delegate.getPlayer().getHP())
+        delegate.setPlayer(player: player)
+
+        if player.death {
+            self.eventList.append(.system(.last))
+        }
+    }
+    
+    private func playerLevelUp() {
+        guard let delegate = self.delegate else {
+            return
+        }
+        let player = delegate.getPlayer()
+        player.levelUP()
+        delegate.setPlayer(player: player)
     }
     
     private func playerEscape() {
-        self.playerReceiveDamage(value: 10)
+        self.playerReceiveDamage(escape: true)
     }
 }

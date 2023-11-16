@@ -33,10 +33,9 @@ final class TextButton: Button {
     }
     
     @objc private func textButtonTapped(_ sender: UIButton){
-        guard let delegate = delegate, let text = delegate.nextText() else {
+        guard let delegate = self.delegate else {
             return
         }
-        self.setTitle(text, for: .normal)
+        delegate.textButtonTapped()
     }
-
 }

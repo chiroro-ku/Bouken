@@ -9,5 +9,6 @@ import Foundation
 import UIKit
 
 class GameView{
-    
+    var viewController: UIViewController?
+    var model: Model?
 }

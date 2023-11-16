@@ -15,7 +15,7 @@ class Monster{
     private var event: String
     
     init(){
-        self.name = "error"
+        self.name = "-"
         self.ration = 0
         self.damege = 0
         self.image = "error"

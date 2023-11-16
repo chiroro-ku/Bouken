@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="JF-Dot-k12x10.ttf">
+            <string>JF-Dot-k12x10</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--title-->
         <scene sceneID="tne-QT-ifu">
@@ -54,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="58.999999999999986" width="393" height="170.66666666666663"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCU-sD-xk8" customClass="GaugeView" customModule="Bouken" customModuleProvider="target">
-                                        <rect key="frame" x="39.333333333333343" y="123.66666666666667" width="314.33333333333326" height="25.666666666666671"/>
+                                        <rect key="frame" x="39.333333333333343" y="81" width="314.33333333333326" height="25.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="gageColor">
@@ -62,13 +67,33 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z78-pS-I60">
+                                        <rect key="frame" x="39.333333333333343" y="47" width="314.33333333333326" height="25.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="JF-Dot-k12x10" family="JF Dot k12x10" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96V-dn-sLg">
+                                        <rect key="frame" x="39.333333333333343" y="132" width="314.33333333333326" height="25.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="JF-Dot-k12x10" family="JF Dot k12x10" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="WCU-sD-xk8" firstAttribute="width" secondItem="yOv-3r-AUH" secondAttribute="width" multiplier="0.8" id="4LQ-tI-KHY"/>
                                     <constraint firstItem="WCU-sD-xk8" firstAttribute="centerX" secondItem="yOv-3r-AUH" secondAttribute="centerX" id="Bfg-Yg-L2T"/>
-                                    <constraint firstItem="WCU-sD-xk8" firstAttribute="centerY" secondItem="yOv-3r-AUH" secondAttribute="centerY" multiplier="1.6" id="R2b-Fn-gxw"/>
+                                    <constraint firstItem="Z78-pS-I60" firstAttribute="centerX" secondItem="yOv-3r-AUH" secondAttribute="centerX" id="DG5-Ct-pfh"/>
+                                    <constraint firstItem="96V-dn-sLg" firstAttribute="centerY" secondItem="yOv-3r-AUH" secondAttribute="centerY" multiplier="1.7" id="Kzj-2O-nfy"/>
+                                    <constraint firstItem="Z78-pS-I60" firstAttribute="width" secondItem="WCU-sD-xk8" secondAttribute="width" id="MBa-2q-9gl"/>
+                                    <constraint firstItem="WCU-sD-xk8" firstAttribute="centerY" secondItem="yOv-3r-AUH" secondAttribute="centerY" multiplier="1.1" id="R2b-Fn-gxw"/>
+                                    <constraint firstItem="96V-dn-sLg" firstAttribute="width" secondItem="WCU-sD-xk8" secondAttribute="width" id="Rc7-hK-ghE"/>
+                                    <constraint firstItem="96V-dn-sLg" firstAttribute="centerX" secondItem="yOv-3r-AUH" secondAttribute="centerX" id="Xgj-U5-fZN"/>
+                                    <constraint firstItem="96V-dn-sLg" firstAttribute="height" secondItem="WCU-sD-xk8" secondAttribute="height" id="nEB-dw-QBF"/>
                                     <constraint firstItem="WCU-sD-xk8" firstAttribute="height" secondItem="yOv-3r-AUH" secondAttribute="height" multiplier="0.15" id="pQf-uQ-EVb"/>
+                                    <constraint firstItem="Z78-pS-I60" firstAttribute="height" secondItem="WCU-sD-xk8" secondAttribute="height" id="pgn-i2-pB2"/>
+                                    <constraint firstItem="Z78-pS-I60" firstAttribute="centerY" secondItem="yOv-3r-AUH" secondAttribute="centerY" multiplier="0.7" id="xKx-fd-nF6"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LU2-xi-CSr" customClass="DisplayView" customModule="Bouken" customModuleProvider="target">
@@ -155,6 +180,8 @@
                         <outlet property="displayView" destination="LU2-xi-CSr" id="GcT-7y-w41"/>
                         <outlet property="escapeButton" destination="Rn5-KA-jzZ" id="xIc-ao-Tkc"/>
                         <outlet property="gaugeView" destination="WCU-sD-xk8" id="QUx-Jk-sgS"/>
+                        <outlet property="monsterLabel" destination="96V-dn-sLg" id="HtK-yk-cdx"/>
+                        <outlet property="playerLabel" destination="Z78-pS-I60" id="2zG-OZ-He9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4K-fj-2Ox" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

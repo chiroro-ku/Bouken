@@ -12,7 +12,22 @@ class Player{
     private var name: String
     private var lv: Int
     private var maxHP: Int
-    private var hp: Int
+    private var hp: Int {
+        didSet{
+            if self.hp > self.maxHP {
+                self.hp = self.maxHP
+            }else if self.hp <= 0{
+                self.hp = 0
+            }
+            
+        }
+    }
+    
+    var death: Bool{
+        get{
+            self.hp == 0
+        }
+    }
     
     init(name: String){
         self.name = name
@@ -37,11 +52,20 @@ class Player{
         return self.maxHP
     }
     
-    func receiveDamage(value: Int) -> Bool{
+    func levelUP() {
+        self.lv += 1
+        self.maxHP += 10
+        self.hp += Int(Float(self.maxHP - self.hp) * 0.3) + 10
+    }
+    
+    func receiveDamage(value: Int) {
         self.hp -= value
         if self.hp < 0 {
             self.hp = 0
         }
-        return self.hp <= 0
+    }
+    
+    func escape() {
+        self.receiveDamage(value: 10)
     }
 }
