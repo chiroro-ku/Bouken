@@ -19,7 +19,9 @@
 		F6A02FDC2AE921630008AF32 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A02FDB2AE921630008AF32 /* DisplayView.swift */; };
 		F6AEF0882AF54CE600C44ECB /* MonsterData.csv in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0872AF54CE500C44ECB /* MonsterData.csv */; };
 		F6AEF08C2B02301B00C44ECB /* GameText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEF08B2B02301B00C44ECB /* GameText.swift */; };
-		F6AEF08E2B06741100C44ECB /* maou_se_battle03.wav in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF08D2B06741100C44ECB /* maou_se_battle03.wav */; };
+		F6AEF0902B067B3800C44ECB /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEF08F2B067B3800C44ECB /* Audio.swift */; };
+		F6AEF0932B06819C00C44ECB /* maou_se_battle03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0922B06819C00C44ECB /* maou_se_battle03.mp3 */; };
+		F6AEF0952B06830D00C44ECB /* maou_se_system23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0942B06830D00C44ECB /* maou_se_system23.mp3 */; };
 		F6B7A4B12AE9888A004F6A0F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B02AE9888A004F6A0F /* Button.swift */; };
 		F6B7A4B32AE988FD004F6A0F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B22AE988FD004F6A0F /* TextButton.swift */; };
 		F6B7A4B52AEAC977004F6A0F /* TextButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B42AEAC977004F6A0F /* TextButtonProtocol.swift */; };
@@ -54,7 +56,9 @@
 		F6A02FDB2AE921630008AF32 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		F6AEF0872AF54CE500C44ECB /* MonsterData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MonsterData.csv; sourceTree = "<group>"; };
 		F6AEF08B2B02301B00C44ECB /* GameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameText.swift; sourceTree = "<group>"; };
-		F6AEF08D2B06741100C44ECB /* maou_se_battle03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = maou_se_battle03.wav; sourceTree = "<group>"; };
+		F6AEF08F2B067B3800C44ECB /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		F6AEF0922B06819C00C44ECB /* maou_se_battle03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_battle03.mp3; sourceTree = "<group>"; };
+		F6AEF0942B06830D00C44ECB /* maou_se_system23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_system23.mp3; sourceTree = "<group>"; };
 		F6B7A4B02AE9888A004F6A0F /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		F6B7A4B22AE988FD004F6A0F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F6B7A4B42AEAC977004F6A0F /* TextButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonProtocol.swift; sourceTree = "<group>"; };
@@ -134,7 +138,9 @@
 				F6B7A4E02AF3FC18004F6A0F /* GaugeViewProtocol.swift */,
 				F6AEF0872AF54CE500C44ECB /* MonsterData.csv */,
 				F6AEF08B2B02301B00C44ECB /* GameText.swift */,
-				F6AEF08D2B06741100C44ECB /* maou_se_battle03.wav */,
+				F6AEF08F2B067B3800C44ECB /* Audio.swift */,
+				F6AEF0922B06819C00C44ECB /* maou_se_battle03.mp3 */,
+				F6AEF0942B06830D00C44ECB /* maou_se_system23.mp3 */,
 			);
 			path = Bouken;
 			sourceTree = "<group>";
@@ -201,8 +207,9 @@
 				F6A02FD62AE916F10008AF32 /* JF-Dot-k12x10.ttf in Resources */,
 				F6A02FDA2AE91F2B0008AF32 /* DisplayView.xib in Resources */,
 				F6AEF0882AF54CE600C44ECB /* MonsterData.csv in Resources */,
-				F6AEF08E2B06741100C44ECB /* maou_se_battle03.wav in Resources */,
+				F6AEF0952B06830D00C44ECB /* maou_se_system23.mp3 in Resources */,
 				F6A02FCB2AE916960008AF32 /* Assets.xcassets in Resources */,
+				F6AEF0932B06819C00C44ECB /* maou_se_battle03.mp3 in Resources */,
 				F6A02FC92AE916920008AF32 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6AEF0902B067B3800C44ECB /* Audio.swift in Sources */,
 				F6B7A4C12AEB4262004F6A0F /* EventType.swift in Sources */,
 				F6A02FC62AE916920008AF32 /* ViewController.swift in Sources */,
 				F6B7A4B12AE9888A004F6A0F /* Button.swift in Sources */,

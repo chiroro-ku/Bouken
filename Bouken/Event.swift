@@ -39,7 +39,7 @@ class Event{
     }
     
     func textListLoad() {
-        self.printData()
+//        self.printData()
         if !self.textList.isEmpty() {
             return
         }

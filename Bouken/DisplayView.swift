@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 @IBDesignable
 final class DisplayView: UIView {
@@ -16,7 +15,7 @@ final class DisplayView: UIView {
     @IBOutlet weak var textButton: TextButton!
     //@IBInspectable var text: String = ""
     
-    let attackAudioFileName = "maou_se_battle03.wav"
+    let audio = Audio()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,18 +39,6 @@ final class DisplayView: UIView {
         }
         view.frame = bounds
         addSubview(view)
-    }
-    
-    private func audioPlay(fileName: String){
-        let path = Bundle.main.bundleURL.appending(path: fileName)
-        var player = AVAudioPlayer()
-        
-        do{
-            player = try AVAudioPlayer(contentsOf: path)
-            player.play()
-        }catch{
-            print("audio error")
-        }
     }
     
     func escapeAnimate(){
@@ -80,6 +67,7 @@ final class DisplayView: UIView {
     
     func playerAttackAnimate(){
         
+        self.audio.playerAttack()
         self.textButton.isEnabled = false
         
         UIView.animate(withDuration: 0.1, animations: {
