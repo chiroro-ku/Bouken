@@ -42,7 +42,7 @@ final class DisplayView: UIView {
     }
     
     func escapeAnimate(){
-        
+        self.audio.escape()
         self.textButton.isEnabled = false
         
         UIView.animate(withDuration: 0.4,  animations: {
@@ -57,9 +57,9 @@ final class DisplayView: UIView {
     
     func respawnAnimate() {
 
-        self.textButton.isEnabled = false
+//        self.textButton.isEnabled = false
         
-        UIView.animate(withDuration: 0.5,  animations: {
+        UIView.animate(withDuration: 0.4,  animations: {
             self.monsterImageView.alpha = 1
         }, completion:  self.animateCompletion(_:))
         

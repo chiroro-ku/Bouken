@@ -92,7 +92,7 @@ class TextData {
             }
             let player = delegate.getPlayer()
             if player.death {
-                text += ",\(self.getPlayerName())は走り疲れた,ばたっ…,\(self.getPlayerName())は力尽きた…"
+                text += ",\(self.getPlayerName())は走り疲れた,もうダメ…,ばたっ…,\(self.getPlayerName())は力尽きた…"
             }
             textList = GameText(text: text)
             textList.setAnimate(text: "\(self.getPlayerName())は逃げ出した…", eventType: .animate(eventType))

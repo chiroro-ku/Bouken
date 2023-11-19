@@ -29,7 +29,7 @@ class Model{
         
         self.event.delegate = self
         self.event.append(event: .system(.first))
-        self.textLoad()
+        _ = self.textLoad()
     }
     
     private func viewLoad(){
@@ -39,15 +39,16 @@ class Model{
         view.viewLoad()
     }
     
-    func textLoad(){
+    func textLoad() -> Bool{
         if self.event.isEmpty() {
-            return
+            return false
         }
         let gameText = self.event.getGameText()
         self.text = gameText.text
         self.animateEventType = gameText.animate
         self.animateFlag = true
         self.viewLoad()
+        return true
     }
     
     func getText() -> String{
@@ -58,20 +59,22 @@ class Model{
         return self.monster.getImage()
     }
     
-    func playerAttack(){
+    func playerAttack() -> Bool{
         if !self.event.isEmpty() {
-           return
+           return false
         }
         self.event.append(event: .player(.attack))
-        self.textLoad()
+        _ = self.textLoad()
+        return true
     }
     
-    func playerEscape(){
+    func playerEscape() -> Bool{
         if !self.event.isEmpty() {
-           return
+           return false
         }
         self.event.append(event: .player(.escape))
-        self.textLoad()
+        _ = self.textLoad()
+        return true
     }
     
     func getAnimateFlag() -> Bool {

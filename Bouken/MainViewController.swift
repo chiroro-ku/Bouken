@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var atttackButton: Button!
     @IBOutlet weak var escapeButton: Button!
     
+    let audio = Audio()
+    
     var model = Model(playerName: "冒険者")
     var gameView = GameView()
     
@@ -39,11 +41,17 @@ class MainViewController: UIViewController {
     }
     
     @objc private func attackButtonTapped(_ sender: UIButton) {
-        self.model.playerAttack()
+        let bool = self.model.playerAttack()
+        if bool {
+            self.audio.buttonTapped()
+        }
     }
 
     @objc private func escapeButtonTapped(_ sender: UIButton) {
-        self.model.playerEscape()
+        let bool = self.model.playerEscape()
+        if bool {
+            self.audio.buttonTapped()
+        }
     }
     
     private func eventAnimate(){
@@ -112,6 +120,9 @@ extension MainViewController: ViewProtocol {
 
 extension MainViewController: TextButtonProtocol {
     func textButtonTapped() {
-        self.model.textLoad()
+        let bool = self.model.textLoad()
+        if bool {
+            self.audio.textButtonTapped()
+        }
     }
 }

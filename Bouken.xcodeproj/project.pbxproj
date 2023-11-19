@@ -22,6 +22,8 @@
 		F6AEF0902B067B3800C44ECB /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEF08F2B067B3800C44ECB /* Audio.swift */; };
 		F6AEF0932B06819C00C44ECB /* maou_se_battle03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0922B06819C00C44ECB /* maou_se_battle03.mp3 */; };
 		F6AEF0952B06830D00C44ECB /* maou_se_system23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0942B06830D00C44ECB /* maou_se_system23.mp3 */; };
+		F6AEF0972B06857D00C44ECB /* maou_se_system44.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0962B06857D00C44ECB /* maou_se_system44.mp3 */; };
+		F6AEF0992B06898700C44ECB /* maou_se_battle19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6AEF0982B06898700C44ECB /* maou_se_battle19.mp3 */; };
 		F6B7A4B12AE9888A004F6A0F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B02AE9888A004F6A0F /* Button.swift */; };
 		F6B7A4B32AE988FD004F6A0F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B22AE988FD004F6A0F /* TextButton.swift */; };
 		F6B7A4B52AEAC977004F6A0F /* TextButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4B42AEAC977004F6A0F /* TextButtonProtocol.swift */; };
@@ -59,6 +61,8 @@
 		F6AEF08F2B067B3800C44ECB /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F6AEF0922B06819C00C44ECB /* maou_se_battle03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_battle03.mp3; sourceTree = "<group>"; };
 		F6AEF0942B06830D00C44ECB /* maou_se_system23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_system23.mp3; sourceTree = "<group>"; };
+		F6AEF0962B06857D00C44ECB /* maou_se_system44.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_system44.mp3; sourceTree = "<group>"; };
+		F6AEF0982B06898700C44ECB /* maou_se_battle19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_battle19.mp3; sourceTree = "<group>"; };
 		F6B7A4B02AE9888A004F6A0F /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		F6B7A4B22AE988FD004F6A0F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F6B7A4B42AEAC977004F6A0F /* TextButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonProtocol.swift; sourceTree = "<group>"; };
@@ -139,8 +143,10 @@
 				F6AEF0872AF54CE500C44ECB /* MonsterData.csv */,
 				F6AEF08B2B02301B00C44ECB /* GameText.swift */,
 				F6AEF08F2B067B3800C44ECB /* Audio.swift */,
+				F6AEF0962B06857D00C44ECB /* maou_se_system44.mp3 */,
 				F6AEF0922B06819C00C44ECB /* maou_se_battle03.mp3 */,
 				F6AEF0942B06830D00C44ECB /* maou_se_system23.mp3 */,
+				F6AEF0982B06898700C44ECB /* maou_se_battle19.mp3 */,
 			);
 			path = Bouken;
 			sourceTree = "<group>";
@@ -203,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6AEF0992B06898700C44ECB /* maou_se_battle19.mp3 in Resources */,
 				F6A02FCE2AE916960008AF32 /* LaunchScreen.storyboard in Resources */,
 				F6A02FD62AE916F10008AF32 /* JF-Dot-k12x10.ttf in Resources */,
 				F6A02FDA2AE91F2B0008AF32 /* DisplayView.xib in Resources */,
@@ -210,6 +217,7 @@
 				F6AEF0952B06830D00C44ECB /* maou_se_system23.mp3 in Resources */,
 				F6A02FCB2AE916960008AF32 /* Assets.xcassets in Resources */,
 				F6AEF0932B06819C00C44ECB /* maou_se_battle03.mp3 in Resources */,
+				F6AEF0972B06857D00C44ECB /* maou_se_system44.mp3 in Resources */,
 				F6A02FC92AE916920008AF32 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
