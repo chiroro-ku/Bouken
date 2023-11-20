@@ -34,7 +34,7 @@ class GameText{
     
     init(text: String){
         self.textList = text.components(separatedBy: ",")
-        for _ in textList{
+        for _ in self.textList{
             self.animateList.append(.animate(.no))
         }
     }
@@ -61,16 +61,25 @@ class GameText{
         return self.animateList.removeFirst()
     }
     
-    func append(text: String){
-        self.textList += text.components(separatedBy: ",")
-    }
-    
     func getGameText() -> GameText {
         let text = self.getText()
         let animate = self.getAnimate()
         let gameText = GameText(text: text)
         gameText.animate = animate
         return gameText
+    }
+    
+    func append(text: String){
+        let textList = text.components(separatedBy: ",")
+        for text in textList{
+            self.textList.append(text)
+            self.animateList.append(.animate(.no))
+        }
+    }
+    
+    func append(gameText: GameText){
+        self.textList += gameText.textList
+        self.animateList += gameText.animateList
     }
     
     func isEmpty() -> Bool {

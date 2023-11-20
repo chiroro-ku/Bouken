@@ -30,7 +30,7 @@ class Event{
     }
     
     func append(gameText: GameText){
-        
+        self.textList.append(gameText: gameText)
     }
     
     func getEvent() -> EventType{
@@ -50,7 +50,8 @@ class Event{
         let eventType = self.getEvent()
         switch eventType {
         case .system(.first):
-            self.textList = self.textData.getTextList(eventType: eventType)
+            let gameText = self.textData.getTextList(eventType: eventType)
+            self.append(gameText: gameText)
             self.append(event: .monster(.respawn))
             break
         case .monster(.respawn):
