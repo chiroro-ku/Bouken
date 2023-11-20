@@ -26,7 +26,11 @@ class Event{
     
     func append(eventList: [EventType]){
         self.eventList += eventList
-        self.textListLoad()
+//        self.textListLoad()
+    }
+    
+    func append(gameText: GameText){
+        
     }
     
     func getEvent() -> EventType{
@@ -138,7 +142,7 @@ class Event{
         delegate.setPlayer(player: player)
 
         if player.death {
-            self.eventList.append(.system(.last))
+            self.append(event: .system(.last))
         }
     }
     
