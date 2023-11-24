@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Event{
+class _Event{
     
     private var monsterData: MonsterData = MonsterData()
     private var textData: TextData = TextData()

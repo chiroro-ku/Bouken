@@ -16,6 +16,8 @@ final class GaugeView: UIView {
     private var gaugeView: UIView = UIView()
     private var valueLabel: UILabel = UILabel()
     
+    var delegete: GaugeViewProtocol?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.gaugeViewInit()
@@ -50,5 +52,19 @@ final class GaugeView: UIView {
         let valueText = "\(value) / \(maxValue)"
         self.valueLabel.text = valueText
         self.valueLabel.frame = CGRect(x: 10, y: 0, width: self.frame.width, height: self.frame.height)
+    }
+    
+    func loadGauge(animate: Bool = true){
+        guard let delegete = self.delegete else {
+            return
+        }
+        let (value, maxValue) = delegete.loadValue()
+        self.loadGauge(value: value, maxValue: maxValue, animate: animate)
+    }
+}
+
+extension GaugeView: DisplayViewProtocol{
+    func load() {
+        self.loadGauge()
     }
 }

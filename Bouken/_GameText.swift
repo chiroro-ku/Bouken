@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GameText{
+class _GameText{
     private var textList: [String]
     private var animateList: [EventType] = []
     

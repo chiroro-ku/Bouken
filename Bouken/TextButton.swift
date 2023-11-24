@@ -12,6 +12,7 @@ import UIKit
 final class TextButton: Button {
     
     var delegate: TextButtonProtocol?
+    var audio = Audio()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,5 +38,6 @@ final class TextButton: Button {
             return
         }
         delegate.textButtonTapped()
+        self.audio.textButtonTapped()
     }
 }

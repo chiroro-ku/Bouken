@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Player{
+class _Player{
     
     private var name: String
     private var lv: Int

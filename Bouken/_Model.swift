@@ -9,17 +9,27 @@ import Foundation
 
 class _Model{
     
-    var eventList: EventList?
-    var textList: TextList?
+    private var event: Event
+    
+    private var player: Player
+    private var monster: Monster
+    private var text: String
+    private var animateFlag: Bool
+    private var animateEventType: EventType
     
     weak var view: ViewProtocol?
     
-    init() {
-//        let firstText = textList.getFirstTextList()
-//        self.eventList.setTextEvent(textList: firstText)
+    init(playerName: String){
+        self.event = Event()
+        self.player = Player(name: playerName)
+        self.monster = Monster()
+        self.text = ""
+        self.animateFlag = false
+        self.animateEventType = .animate(.no)
         
-        let monsterRespawnEvent = Event(eventType: .system(.monster(.respawn)))
-//        self.eventList.appendEvent(events: [monsterRespawnEvent])
+        self.event.delegate = self
+        self.event.append(event: .system(.first))
+        _ = self.textLoad()
     }
     
     private func viewLoad(){
@@ -29,44 +39,78 @@ class _Model{
         view.viewLoad()
     }
     
-    func getText() -> String{
-        let (event, _ ) = self.eventList.getEventAndNextEvent()
-        return event.getText()
-    }
-    
-    func playerAttack(){
-//        if !self.isTextListEnd() {
-//            return
-//        }
-//        let textList = self.textList.getAttackTextList(playerName: "冒険者")
-//        self.eventList.appendTextEvent(textList: textList)
-        let attackEvent = Event(eventType: .player(.attack))
-        self.eventList.appendEvent(events: [attackEvent])
-        self.viewLoad()
-    }
-    
-    func playerEscape(){
-//        if !self.isTextListEnd() {
-//            return
-//        }
-//        let textList = self.textList.getEscapeTextList(playerName: "冒険者")
-//        self.eventList.appendTextEvent(textList: textList)
-        let attackEvent = Event(eventType: .player(.escape))
-        self.eventList.appendEvent(events: [attackEvent])
-        self.viewLoad()
-    }
-    
-    private func eventModel(){
-        let (event, nextEvent) = self.eventList.getEventAndNextEvent()
-        
-        let eventList: [Event] = []
-        switch event.getEventType(){
-        case .system(.first):
-//            let firstText = self.textList.getFirstTextList()
-//            eventList.setTextEvent(textList: firstText)
-            break
-        default:
-            break
+    func textLoad() -> Bool{
+        if self.event.isEmpty() {
+            return false
         }
+        let gameText = self.event.getGameText()
+        self.text = gameText.text
+        self.animateEventType = gameText.animate
+        self.animateFlag = true
+        self.viewLoad()
+        return true
+    }
+    
+    func getText() -> String{
+        return self.text
+    }
+    
+    func getMonsterImage() -> String{
+        return self.monster.getImage()
+    }
+    
+    func playerAttack() -> Bool{
+        if !self.event.isEmpty() {
+           return false
+        }
+        self.event.append(event: .player(.attack))
+        _ = self.textLoad()
+        return true
+    }
+    
+    func playerEscape() -> Bool{
+        if !self.event.isEmpty() {
+           return false
+        }
+        self.event.append(event: .player(.escape))
+        _ = self.textLoad()
+        return true
+    }
+    
+    func getAnimateFlag() -> Bool {
+        let bool = self.animateFlag
+        self.animateFlag = false
+        return bool
+    }
+    
+    func getAnimateEventType() -> EventType {
+        return self.animateEventType
+    }
+}
+
+extension Model: EventProtocol{
+    
+    func getPlayerName() -> String {
+        return self.player.getName()
+    }
+    
+    func getMonsterName() -> String {
+        return self.monster.getName()
+    }
+    
+    func getPlayer() -> Player {
+        return self.player
+    }
+    
+    func getMonster() -> Monster {
+        return self.monster
+    }
+    
+    func setPlayer(player: Player) {
+        self.player = player
+    }
+    
+    func setMonster(monster: Monster) {
+        self.monster = monster
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TextData {
+class _TextData {
     
     let errorText = "error"
     var delegate: EventProtocol?

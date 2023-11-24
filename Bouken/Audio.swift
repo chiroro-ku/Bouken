@@ -38,8 +38,20 @@ class Audio{
         self.play(fileName: "maou_se_battle03", extentionName: "mp3")
     }
     
-    func escape(){
+    func playerEscape(){
         self.play(fileName: "maou_se_battle19", extentionName: "mp3")
+    }
+    
+    func playerLevelUP(){
+        self.play(fileName: "nc295968", extentionName: "mp3")
+    }
+    
+    func monsterAttack(){
+        self.play(fileName: "maou_se_battle16", extentionName: "mp3")
+    }
+    
+    func monsterDeath(){
+        self.play(fileName: "maou_se_8bit12", extentionName: "mp3")
     }
     
     func buttonTapped(){

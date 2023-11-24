@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Monster{
+class _Monster{
     private var name: String
     private var ration: Int
     private var damege: Int

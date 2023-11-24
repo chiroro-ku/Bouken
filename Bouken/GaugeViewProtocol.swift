@@ -8,5 +8,5 @@
 import Foundation
 
 protocol GaugeViewProtocol{
-    func loadGauge(value: Int, maxValue: Int)
+    func loadValue() -> (Int, Int)
 }

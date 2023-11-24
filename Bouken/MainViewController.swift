@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     let audio = Audio()
     
-    var model = Model(playerName: "冒険者")
+    var model = Main(playerName: "冒険者")
     var gameView = GameView()
     
     override func viewDidLoad() {
@@ -27,102 +27,113 @@ class MainViewController: UIViewController {
         self.atttackButton.addTarget(self, action: #selector(attackButtonTapped(_:)), for: .touchUpInside)
         self.escapeButton.addTarget(self, action: #selector(escapeButtonTapped(_:)), for: .touchUpInside)
         
-        self.displayView.textButton.delegate = self
         self.model.view = self
-        self.gameView.viewController = self
-        self.gameView.model = self.model
+        self.model.loadEvent()
         
-        self.viewLoad()
+        self.gaugeView.delegete = self
+        self.gaugeView.load()
+        
+        self.displayView.textButton.delegate = self
+        self.displayView.delegete = self.gaugeView
+        
+        self.atttackButton.isEnabled = false
+        self.escapeButton.isEnabled = false
+        
+        self.loadPlayer()
+//        self.loadGameView()
     }
     
-    override func viewWillLayoutSubviews() {
-        let player = self.model.getPlayer()
-        self.gaugeView.loadGauge(value: player.getHP(), maxValue: player.getMaxHP(), animate: false)
+    override func viewDidAppear(_ animated: Bool) {
+        self.gaugeView.loadGauge(animate: false)
     }
     
     @objc private func attackButtonTapped(_ sender: UIButton) {
-        let bool = self.model.playerAttack()
-        if bool {
-            self.audio.buttonTapped()
-        }
+        self.audio.buttonTapped()
+        self.model.playerAttack()
     }
 
     @objc private func escapeButtonTapped(_ sender: UIButton) {
-        let bool = self.model.playerEscape()
-        if bool {
-            self.audio.buttonTapped()
-        }
+        self.audio.buttonTapped()
+        self.model.playerEscape()
     }
     
-    private func eventAnimate(){
-        let bool = self.model.getAnimateFlag()
-        if !bool {
+    private func loadMonster(){
+        
+        guard let monster = self.model.monster else{
+            self.monsterLabel.text = "-"
+            self.displayView.monsterImageView.alpha = 0
             return
         }
-        let animateEvent = self.model.getAnimateEventType()
-        switch animateEvent{
-        case .animate(.no):
+        
+        let name = monster.name
+        self.monsterLabel.text = name
+        
+        let image = monster.image
+        self.displayView.monsterImageView.image = UIImage(named: image)
+    }
+    
+    private func loadPlayer(){
+        let player = self.model.player
+        let name = player.name
+        let lv = player.lv
+        let playerText = "\(name) Lv. \(lv)"
+        self.playerLabel.text = playerText
+    }
+}
+
+extension MainViewController: ViewProtocol {
+    func loadGameView() {
+
+        self.loadMonster()
+        
+        let gameText = self.model.getGameText()
+        let text = gameText.text
+        self.displayView.textButton.setTitle(text, for: .normal)
+        
+        let event = gameText.event
+        switch event{
+        case .system(.last):
+            self.dismiss(animated: true)
             break
         case .animate(.monster(.respawn)):
-            self.displayView.respawnAnimate()
-            break
-        case .animate(.monster(.attack)):
-            self.displayView.monsterAttckAnimate()
+            self.displayView.monsterRespawnAnimate()
+            self.atttackButton.isEnabled = true
+            self.escapeButton.isEnabled = true
             break
         case .animate(.monster(.death)):
+            self.atttackButton.isEnabled = false
+            self.escapeButton.isEnabled = false
             self.displayView.monsterDeathAnimate()
             break
-        case .animate(.player(.attack)):
-            self.displayView.playerAttackAnimate()
+        case .animate(.monster(.attack)):
+            self.atttackButton.isEnabled = false
+            self.escapeButton.isEnabled = false
+            self.displayView.monsterAttackAnimate()
+            break
+        case .animate(.player(.levelUP)):
+            self.audio.playerLevelUP()
+            self.loadPlayer()
             break
         case .animate(.player(.escape)):
-            self.displayView.escapeAnimate()
+            self.displayView.playerEscapeAnimate()
             break
         case .animate(.player(.death)):
             self.displayView.playerDeathAnimate()
-            break
-        case .system(.last):
-            self.dismiss(animated: true)
             break
         default:
             break
         }
     }
-    
-    private func loadMonster(){
-        let monster = self.model.getMonster()
-        let monsterName = monster.getName()
-        self.monsterLabel.text = monsterName
-        
-        let image = self.model.getMonsterImage()
-        self.displayView.monsterImageView.image = UIImage(named: image)
-    }
-}
-
-extension MainViewController: ViewProtocol {
-    func viewLoad() {
-        let player = self.model.getPlayer()
-        let name = player.getName()
-        let lv = player.getLv()
-        let playerText = "\(name) Lv. \(lv)"
-        self.playerLabel.text = playerText
-        
-        self.gaugeView.loadGauge(value: player.getHP(), maxValue: player.getMaxHP())
-        
-        self.loadMonster()
-        
-        let text = self.model.getText()
-        self.displayView.textButton.setTitle(text, for: .normal)
-        
-        self.eventAnimate()
-    }
 }
 
 extension MainViewController: TextButtonProtocol {
     func textButtonTapped() {
-        let bool = self.model.textLoad()
-        if bool {
-            self.audio.textButtonTapped()
-        }
+        self.model.loadEvent()
+    }
+}
+
+extension MainViewController: GaugeViewProtocol{
+    func loadValue() -> (Int, Int) {
+        return (self.model.player.hp, self.model.player.maxHP)
     }
 }
