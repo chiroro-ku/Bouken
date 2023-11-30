@@ -110,6 +110,19 @@ extension MainViewController: ViewProtocol {
             self.escapeButton.isEnabled = false
             self.displayView.monsterAttackAnimate()
             break
+        case .animate(.monster(.event)):
+            guard let monster = self.model.monster else{
+                return
+            }
+            let eventName = monster.event
+            switch eventName{
+            case "食べる":
+                self.displayView.monsterEventEat()
+                break
+            default:
+                break
+            }
+            break
         case .animate(.player(.levelUP)):
             self.audio.playerLevelUP()
             self.loadPlayer()

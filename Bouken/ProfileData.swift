@@ -22,7 +22,7 @@ class ProfileData {
             let aData = try String(contentsOfFile: path, encoding: .utf8)
             self.data = aData.components(separatedBy: "\r\n")
             self.data.removeFirst()
-            self.data.removeLast()
+//            self.data.removeLast()
         }catch let error as NSError {
             print("\(error)")
         }

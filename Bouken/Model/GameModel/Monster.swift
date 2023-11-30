@@ -7,6 +7,9 @@
 
 import Foundation
 class Monster{
+    
+    private var eventFlag = false
+    
     private(set) var name: String
     private(set) var ration: Int
     private(set) var damege: Int
@@ -14,6 +17,8 @@ class Monster{
     private(set) var event: String
     
     private(set) var death: Bool = false
+    
+    var delegete: MonsterProtocol?
     
     init() {
         self.name = "no name"
@@ -36,5 +41,22 @@ class Monster{
         let ration = self.ration - player.lv
         let random = Int.random(in: 1...100)
         self.death = random > ration
+    }
+    
+    func loadEvent(){
+        guard let delegete = self.delegete else {
+            return
+        }
+        delegete.loadMonsterEvent()
+    }
+    
+    func appendEvent(){
+        if self.eventFlag {
+            return
+        }
+        guard let delegete = self.delegete else {
+            return
+        }
+        self.eventFlag = delegete.appendMonsterEvent()
     }
 }

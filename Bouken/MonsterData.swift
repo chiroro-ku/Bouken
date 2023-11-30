@@ -11,10 +11,20 @@ class MonsterData: ProfileData{
     
     private var list: [Monster] = []
     
+    var delegete: MonsterProtocol?{
+        didSet{
+            for monster in list{
+                monster.delegete = self.delegete
+            }
+        }
+    }
+    
     init() {
         super.init(fileName: "MonsterData")
         for aData in self.data {
-            self.list.append(Monster(data: aData))
+            let monster = Monster(data: aData)
+            monster.delegete = self.delegete
+            self.list.append(monster)
         }
     }
     
@@ -23,5 +33,14 @@ class MonsterData: ProfileData{
             return Monster()
         }
         return monster
+    }
+    
+    func getMonster(name: String) -> Monster?{
+        for monster in self.list {
+            if monster.name == name{
+                return monster
+            }
+        }
+        return nil
     }
 }

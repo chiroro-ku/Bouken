@@ -39,7 +39,7 @@ class TextData{
                 text = "\(self.getPlayerName())は攻撃した！,\(self.getMonsterName())を倒した！"
             }else if self.model.player.death{
                 text = "\(self.getPlayerName())は攻撃した！,\(self.getMonsterName())は反撃してきた！, \(monster.damege) ダメージを受けた…"
-            }else{
+            } else {
                 text = "\(self.getPlayerName())は攻撃した！,\(self.getMonsterName())は反撃してきた！,\(monster.damege) ダメージを受けた,\(self.getPlayerName())は逃げ出した…"
             }
             break
@@ -59,6 +59,18 @@ class TextData{
         case .monster(.respawn):
             text = "\(self.getMonsterName())が現れた！,どうする？"
             break
+        case .monster(.event):
+            guard let monster = self.model.monster else{
+                return "-"
+            }
+            let eventName = monster.event
+            switch eventName{
+            case "食べる":
+                text = "\(self.getMonsterName())は大きく口を開けた…！,攻撃しようと近づいた\(self.getPlayerName())は、,\(self.getMonsterName())に飲み込まれた！"
+                break
+            default:
+                break
+            }
         default:
             break
         }

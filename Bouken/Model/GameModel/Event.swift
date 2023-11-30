@@ -14,6 +14,7 @@ class Event{
     
     private var textList: [GameText]
     private var eventList: [EventType]
+    private var monsterList: [Monster]
     
     var model = Model(){
         didSet{
@@ -24,7 +25,16 @@ class Event{
     init(){
         self.textList = []
         self.eventList = []
+        self.monsterList = []
 //        self.textData.model = self.model
+        
+        self.monsterData.delegete = self
+        
+        guard let monster = self.monsterData.getMonster(name: "全テヲ喰ラウ闇ノ口") else {
+            return
+        }
+        
+        self.monsterList.append(monster)
     }
     
     private func playerTakeDamege(damege: Int){
@@ -80,6 +90,7 @@ class Event{
         if self.eventList.isEmpty{
             return
         }
+        self.model.monster?.appendEvent()
         let event = self.eventList.removeFirst()
         switch event{
         case .system(.first):
@@ -135,10 +146,59 @@ class Event{
             self.append(event: .system(.last), top: true)
             break
         case .monster(.respawn):
-            self.model.setMonster(monster: self.monsterData.getRandomMonster())
+            self.model.setMonster(monster: self.monsterList.randomElement())
             let text = self.textData.getText(event: event)
             self.append(text: text)
             self.append(index: 0, event: .animate(.monster(.respawn)))
+            break
+        case .monster(.event):
+            self.model.monster?.loadEvent()
+            break
+        default:
+            break
+        }
+    }
+}
+
+extension Event: MonsterProtocol{    
+    func appendMonsterEvent() -> Bool{
+        var bool = false
+        guard let monster = self.model.monster else{
+            return false
+        }
+        let eventName = monster.event
+        let nextEvent = self.eventList[0]
+        switch eventName{
+        case "食べる":
+            switch nextEvent{
+            case .player(.attack):
+                self.eventList.removeFirst()
+                self.append(event: .monster(.event))
+                bool = true
+                break
+            default:
+                break
+            }
+            break
+        default:
+            break
+        }
+        return bool
+    }
+    
+    func loadMonsterEvent(){
+        guard let monster = self.model.monster else{
+            return
+        }
+        let eventName = monster.event
+        switch eventName{
+        case "食べる":
+            let damage = self.model.player.maxHP
+            self.model.player.takeDamege(damege: damage)
+            let text = self.textData.getText(event: .monster(.event))
+            self.append(text: text, load: true)
+            self.append(index: 2, event: .animate(.monster(.event)))
+            self.append(event: .system(.last))
             break
         default:
             break

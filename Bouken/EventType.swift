@@ -25,8 +25,8 @@ indirect enum EventType{
     case death
     case walk
     case levelUP
+    case event
     
     case animate(EventType)
     case no
-    
 }

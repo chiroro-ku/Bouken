@@ -48,6 +48,7 @@
 		F6B7A4DB2AEF8E2F004F6A0F /* EventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4DA2AEF8E2F004F6A0F /* EventProtocol.swift */; };
 		F6B7A4DF2AF3F5E2004F6A0F /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4DE2AF3F5E2004F6A0F /* GaugeView.swift */; };
 		F6B7A4E12AF3FC18004F6A0F /* GaugeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7A4E02AF3FC18004F6A0F /* GaugeViewProtocol.swift */; };
+		F6C48DF92B124BB20046CB3F /* MonsterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C48DF82B124BB20046CB3F /* MonsterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		F6B7A4DA2AEF8E2F004F6A0F /* EventProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocol.swift; sourceTree = "<group>"; };
 		F6B7A4DE2AF3F5E2004F6A0F /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
 		F6B7A4E02AF3FC18004F6A0F /* GaugeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeViewProtocol.swift; sourceTree = "<group>"; };
+		F6C48DF82B124BB20046CB3F /* MonsterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				F62DB08B2B0C4E900018FD89 /* Monster.swift */,
 				F62DB08D2B0C51C00018FD89 /* TextData.swift */,
 				F62DB0912B0C5F130018FD89 /* GameText.swift */,
+				F6C48DF82B124BB20046CB3F /* MonsterProtocol.swift */,
 			);
 			path = GameModel;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				F6B7A4C12AEB4262004F6A0F /* EventType.swift in Sources */,
 				F62DB0922B0C5F130018FD89 /* GameText.swift in Sources */,
 				F6A02FC62AE916920008AF32 /* ViewController.swift in Sources */,
+				F6C48DF92B124BB20046CB3F /* MonsterProtocol.swift in Sources */,
 				F6B7A4B12AE9888A004F6A0F /* Button.swift in Sources */,
 				F6B7A4B32AE988FD004F6A0F /* TextButton.swift in Sources */,
 				F6B7A4BD2AEB4080004F6A0F /* GameViewProtocol.swift in Sources */,

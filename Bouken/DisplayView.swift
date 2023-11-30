@@ -125,6 +125,20 @@ final class DisplayView: UIView {
         })
     }
     
+    func monsterEventEat(){
+        self.textButton.isEnabled = false
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.backImageView.alpha = 0
+        }, completion: { _ in
+            guard let delegete = self.delegete else{
+                return
+            }
+            delegete.load()
+            self.animateCompletion(true)
+        })
+    }
+    
     func playerEscapeAnimate(){
         self.textButton.isEnabled = false
         
