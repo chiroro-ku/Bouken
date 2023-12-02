@@ -119,6 +119,9 @@ extension MainViewController: ViewProtocol {
             case "食べる":
                 self.displayView.monsterEventEat()
                 break
+            case "魔法":
+                self.displayView.monsterEventMagic()
+                break
             default:
                 break
             }

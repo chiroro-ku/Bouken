@@ -11,7 +11,7 @@ import AVFoundation
 class Audio{
     var audioPlayerInstance : AVAudioPlayer = AVAudioPlayer()
     
-    private func play(fileName:String, extentionName:String){
+    func play(fileName:String, extentionName:String){
         guard let soundFilePath = Bundle.main.path(forResource:fileName, ofType: extentionName) else {
                 return
         }

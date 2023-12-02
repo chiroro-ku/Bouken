@@ -57,7 +57,18 @@ class TextData{
             text = "ばた…,\(self.getPlayerName())は力尽きた…"
             break
         case .monster(.respawn):
-            text = "\(self.getMonsterName())が現れた！,どうする？"
+            text = "\(self.getMonsterName())が現れた！,"
+            if let textData = self.model.monster?.text, textData != "_" {
+                let textDatas = textData.components(separatedBy: "-")
+                for aText in textDatas {
+                    if aText == "Name" {
+                        text += self.getMonsterName()
+                    }else{
+                        text += aText + ","
+                    }
+                }
+            }
+            text += "どうする?"
             break
         case .monster(.event):
             guard let monster = self.model.monster else{
@@ -67,6 +78,12 @@ class TextData{
             switch eventName{
             case "食べる":
                 text = "\(self.getMonsterName())は大きく口を開けた…！,攻撃しようと近づいた\(self.getPlayerName())は、,\(self.getMonsterName())に飲み込まれた！"
+                break
+            case "魔法":
+                guard let damege = self.model.monster?.eventValue else{
+                    return "-"
+                }
+                text = "\(self.getMonsterName())に魔法で攻撃された！,\(damege)ダメージ！"
                 break
             default:
                 break

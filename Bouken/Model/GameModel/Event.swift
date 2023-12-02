@@ -30,17 +30,25 @@ class Event{
         
         self.monsterData.delegete = self
         
-        guard let monster = self.monsterData.getMonster(name: "全テヲ喰ラウ闇ノ口") else {
-            return
+        if let monster = self.monsterData.getMonster(name: "水ゴースト") {
+            self.monsterList.append(monster)
+        }
+        if let monster = self.monsterData.getMonster(name: "ム゛▼イ゛マ゛ゃ") {
+            self.monsterList.append(monster)
         }
         
-        self.monsterList.append(monster)
+        /*
+        if let monster = self.monsterData.getMonster(name: "ワンコ") {
+            self.monsterList.append(monster)
+        }
+         */
     }
     
     private func playerTakeDamege(damege: Int){
         self.model.player.takeDamege(damege: damege)
         if self.model.player.death {
-            self.append(event: .player(.death))
+            //
+            self.append(event: .player(.death), top: true)
         }
     }
     
@@ -180,6 +188,27 @@ extension Event: MonsterProtocol{
                 break
             }
             break
+        case "ランダム":
+            switch nextEvent{
+            case .player(.attack):
+                let lv = self.model.player.lv
+                let random = Int.random(in: lv...lv+100)
+                self.model.monster?.setRation(ration: random)
+                bool = true
+                break
+            default:
+                break
+            }
+            break
+        case "魔法":
+            switch nextEvent{
+            case .player(.attack):
+                self.append(event: .monster(.event), top: true)
+                bool = true
+                break
+            default:
+                break
+            }
         default:
             break
         }
@@ -199,6 +228,15 @@ extension Event: MonsterProtocol{
             self.append(text: text, load: true)
             self.append(index: 2, event: .animate(.monster(.event)))
             self.append(event: .system(.last))
+            break
+        case "魔法":
+            guard let eventValue = self.model.monster?.eventValue, let damege = Int(eventValue) else{
+                return
+            }
+            self.playerTakeDamege(damege: damege)
+            let text = self.textData.getText(event: .monster(.event))
+            self.append(text: text, load: true)
+            self.append(index: 0, event: .animate(.monster(.event)))
             break
         default:
             break

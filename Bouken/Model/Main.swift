@@ -24,11 +24,9 @@ class Main: Model{
         self.event.append(eventList: firstEventList)
     }
     
-    private func loadView(){
-        guard let view = self.view else{
-            return
-        }
-        view.loadGameView()
+    override func setMonster(monster: Monster?) {
+        super.setMonster(monster: monster)
+        self.monster?.respawn()
     }
     
     func getGameText() -> GameText{
@@ -51,5 +49,12 @@ class Main: Model{
     func playerEscape(){
         self.event.append(event: .player(.escape), load: true)
         self.loadEvent()
+    }
+    
+    private func loadView(){
+        guard let view = self.view else{
+            return
+        }
+        view.loadGameView()
     }
 }

@@ -127,9 +127,31 @@ final class DisplayView: UIView {
     
     func monsterEventEat(){
         self.textButton.isEnabled = false
+        self.audio.play(fileName: "maou_se_magical23", extentionName: "mp3")
         
         UIView.animate(withDuration: 0.5, animations: {
             self.backImageView.alpha = 0
+        }, completion: { _ in
+            guard let delegete = self.delegete else{
+                return
+            }
+            delegete.load()
+            self.animateCompletion(true)
+        })
+    }
+    
+    func monsterEventMagic(){
+        self.textButton.isEnabled = false
+        self.audio.play(fileName: "maou_se_magical09", extentionName: "mp3")
+        
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.6, animations: {
+                self.monsterImageView.center.y -= 50
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.4, animations: {
+                self.monsterImageView.center.y += 50
+            })
         }, completion: { _ in
             guard let delegete = self.delegete else{
                 return
