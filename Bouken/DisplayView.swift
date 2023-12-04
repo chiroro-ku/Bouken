@@ -52,6 +52,23 @@ final class DisplayView: UIView {
         }, completion:  self.animateCompletion(_:))
     }
     
+    func playerEscapeAnimate(){
+        self.textButton.isEnabled = false
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            self.monsterImageView.center.x -= self.monsterImageView.bounds.width
+            self.monsterImageView.alpha = 0
+        }, completion: { _ in
+            self.audio.playerEscape()
+            self.monsterImageView.center.x += self.monsterImageView.bounds.width
+            guard let delegete = self.delegete else{
+                return
+            }
+            delegete.load()
+            self.animateCompletion(true)
+        })
+    }
+    
     func monsterRespawnAnimate() {
         UIView.animate(withDuration: 0.4,  animations: {
             self.monsterImageView.alpha = 1
@@ -161,20 +178,43 @@ final class DisplayView: UIView {
         })
     }
     
-    func playerEscapeAnimate(){
+    func monsterEventEscape(){
         self.textButton.isEnabled = false
         
         UIView.animate(withDuration: 0.4, animations: {
             self.monsterImageView.center.x -= self.monsterImageView.bounds.width
-            self.monsterImageView.alpha = 0
         }, completion: { _ in
             self.audio.playerEscape()
-            self.monsterImageView.center.x += self.monsterImageView.bounds.width
-            guard let delegete = self.delegete else{
-                return
-            }
-            delegete.load()
-            self.animateCompletion(true)
+            self.monsterImageView.center.x += self.monsterImageView.bounds.width * 2
+            
+            UIView.animate(withDuration: 0.4, animations: {
+                self.monsterImageView.center.x -= self.monsterImageView.bounds.width
+            }, completion: { _ in
+                
+                UIView.animateKeyframes(withDuration: 0.3, delay: 0.5, animations: {
+                    UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.33, animations: {
+                        self.monsterImageView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                    })
+                    
+                    UIView.addKeyframe(withRelativeStartTime: 0.33, relativeDuration: 0.66, animations: {
+                        self.monsterImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    })
+                }, completion: { _ in
+                    self.audio.monsterAttack()
+                    UIView.animate(withDuration: 0.4, delay: 0.1, animations: {
+                        self.monsterImageView.center.x -= self.monsterImageView.bounds.width
+                        self.monsterImageView.alpha = 0
+                    }, completion: { _ in
+//                        self.audio.playerEscape()
+                        self.monsterImageView.center.x += self.monsterImageView.bounds.width
+                        guard let delegete = self.delegete else{
+                            return
+                        }
+                        delegete.load()
+                        self.animateCompletion(true)
+                    })
+                })
+            })
         })
     }
     

@@ -33,15 +33,15 @@ class Event{
         if let monster = self.monsterData.getMonster(name: "水ゴースト") {
             self.monsterList.append(monster)
         }
+        /*
         if let monster = self.monsterData.getMonster(name: "ム゛▼イ゛マ゛ゃ") {
             self.monsterList.append(monster)
         }
+         */
         
-        /*
         if let monster = self.monsterData.getMonster(name: "ワンコ") {
             self.monsterList.append(monster)
         }
-         */
     }
     
     private func playerTakeDamege(damege: Int){
@@ -209,6 +209,16 @@ extension Event: MonsterProtocol{
             default:
                 break
             }
+        case "俊敏":
+            switch nextEvent{
+            case .player(.escape):
+                self.eventList.removeFirst()
+                self.append(event: .monster(.event))
+                bool = true
+                break
+            default:
+                break
+            }
         default:
             break
         }
@@ -237,6 +247,17 @@ extension Event: MonsterProtocol{
             let text = self.textData.getText(event: .monster(.event))
             self.append(text: text, load: true)
             self.append(index: 0, event: .animate(.monster(.event)))
+            break
+        case "俊敏":
+            guard let eventValue = self.model.monster?.eventValue, let damege = Int(eventValue) else{
+                return
+            }
+            self.playerTakeDamege(damege: damege)
+            let text = self.textData.getText(event: .monster(.event))
+            self.append(text: text, load: true)
+            self.append(index: 0, event: .animate(.monster(.event)))
+            let nextEvent: [EventType] = [.player(.walk), .monster(.respawn)]
+            self.append(eventList: nextEvent)
             break
         default:
             break

@@ -78,6 +78,7 @@ class MainViewController: UIViewController {
         let lv = player.lv
         let playerText = "\(name) Lv. \(lv)"
         self.playerLabel.text = playerText
+        self.gaugeView.load()
     }
 }
 
@@ -122,6 +123,10 @@ extension MainViewController: ViewProtocol {
             case "魔法":
                 self.displayView.monsterEventMagic()
                 break
+            case "俊敏":
+                self.atttackButton.isEnabled = false
+                self.escapeButton.isEnabled = false
+                self.displayView.monsterEventEscape()
             default:
                 break
             }

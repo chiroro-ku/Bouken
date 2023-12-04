@@ -85,6 +85,12 @@ class TextData{
                 }
                 text = "\(self.getMonsterName())に魔法で攻撃された！,\(damege)ダメージ！"
                 break
+            case "俊敏":
+                guard let damege = self.model.monster?.eventValue else{
+                    return "-"
+                }
+                text = "\(self.getMonsterName())は追いかけてきた！,\(damege)ダメージ！"
+                break
             default:
                 break
             }
