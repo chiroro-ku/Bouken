@@ -91,6 +91,21 @@ class TextData{
                 }
                 text = "\(self.getMonsterName())は追いかけてきた！,\(damege)ダメージ！"
                 break
+            case "毒":
+                guard let monster = self.model.monster else{
+                    return "-"
+                }
+                if monster.death{
+                    guard let eventValue = self.model.monster?.eventValue, let damege = Int(eventValue) else{
+                        return "-"
+                    }
+                    text = "\(self.getPlayerName())は攻撃した！,\(self.getMonsterName())を倒した！,\(self.getMonsterName())は毒を吐き出した！,\(damege)ダメージ…"
+                }else if self.model.player.death{
+                    text = "\(self.getPlayerName())は攻撃した！,\(self.getMonsterName())は反撃してきた！, \(monster.damege) ダメージを受けた…"
+                } else {
+                    text = "\(self.getPlayerName())は攻撃した！,\(self.getMonsterName())は反撃してきた！,\(monster.damege) ダメージを受けた,\(self.getPlayerName())は逃げ出した…"
+                }
+                break
             default:
                 break
             }

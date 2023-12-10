@@ -47,7 +47,11 @@ class Monster{
         self.ration = ration
     }
     
-    func takeAttack(player: Player){
+    func takeAttack(player: Player, bool: Bool = false){
+        if bool {
+            self.death = true
+            return
+        }
         let ration = self.ration - player.lv
         let random = Int.random(in: 1...100)
         self.death = random > ration

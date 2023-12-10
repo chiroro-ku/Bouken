@@ -29,4 +29,5 @@ indirect enum EventType{
     
     case animate(EventType)
     case no
+    case load
 }

@@ -30,16 +30,22 @@ class Event{
         
         self.monsterData.delegete = self
         
+        /*
         if let monster = self.monsterData.getMonster(name: "水ゴースト") {
             self.monsterList.append(monster)
         }
+         */
         /*
         if let monster = self.monsterData.getMonster(name: "ム゛▼イ゛マ゛ゃ") {
             self.monsterList.append(monster)
         }
          */
-        
+        /*
         if let monster = self.monsterData.getMonster(name: "ワンコ") {
+            self.monsterList.append(monster)
+        }
+         */
+        if let monster = self.monsterData.getMonster(name: "ポイズンキノコ") {
             self.monsterList.append(monster)
         }
     }
@@ -123,7 +129,6 @@ class Event{
             }
             if monster.death {
                 self.append(event: .player(.levelUP))
-                self.model.player.levelUP()
             }else{
                 self.playerTakeDamege(damege: monster.damege)
             }
@@ -143,6 +148,7 @@ class Event{
             self.append(eventList: nextEvent)
             break
         case .player(.levelUP):
+            self.model.player.levelUP()
             let text = self.textData.getText(event: event)
             self.append(text: text)
             self.append(index: 0, event: .animate(.player(.levelUP)))
@@ -219,6 +225,17 @@ extension Event: MonsterProtocol{
             default:
                 break
             }
+        case "毒":
+            switch nextEvent{
+            case .player(.attack):
+                self.eventList.removeFirst()
+                self.append(event: .monster(.event))
+                bool = true
+                break
+            default:
+                break
+            }
+            break
         default:
             break
         }
@@ -256,6 +273,28 @@ extension Event: MonsterProtocol{
             let text = self.textData.getText(event: .monster(.event))
             self.append(text: text, load: true)
             self.append(index: 0, event: .animate(.monster(.event)))
+            let nextEvent: [EventType] = [.player(.walk), .monster(.respawn)]
+            self.append(eventList: nextEvent)
+            break
+        case "毒":
+            let player = self.model.player
+            self.model.monster?.takeAttack(player: player, bool: true)
+            if monster.death {
+                guard let eventValue = self.model.monster?.eventValue, let damege = Int(eventValue) else{
+                    return
+                }
+                self.playerTakeDamege(damege: damege)
+                self.append(event: .player(.levelUP))
+            }else{
+                self.playerTakeDamege(damege: monster.damege)
+            }
+            let text = self.textData.getText(event: .monster(.event))
+            self.append(text: text, load: true)
+            let animateEvent: EventType = monster.death ? .animate(.monster(.event)) : .animate(.monster(.attack))
+            self.append(index: 0, event: animateEvent)
+            if monster.death {
+                self.append(index: 2, event: .system(.load))
+            }
             let nextEvent: [EventType] = [.player(.walk), .monster(.respawn)]
             self.append(eventList: nextEvent)
             break

@@ -43,6 +43,7 @@ class Player{
     
     func levelUP(){
         self.lv += 1
+        self.maxHP += 10
         self.hp += 30
     }
 }

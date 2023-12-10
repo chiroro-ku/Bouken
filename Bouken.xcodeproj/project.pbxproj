@@ -50,7 +50,7 @@
 		F6C48DF92B124BB20046CB3F /* MonsterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C48DF82B124BB20046CB3F /* MonsterProtocol.swift */; };
 		F6C48E022B1BA4FE0046CB3F /* maou_se_magical23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6C48E002B1BA4FD0046CB3F /* maou_se_magical23.mp3 */; };
 		F6C48E032B1BA4FE0046CB3F /* maou_se_magical09.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6C48E012B1BA4FD0046CB3F /* maou_se_magical09.mp3 */; };
-		F6C48E052B1E45E80046CB3F /* MonsterData.csv in Resources */ = {isa = PBXBuildFile; fileRef = F6C48E042B1E45E80046CB3F /* MonsterData.csv */; };
+		F6C48E072B1E4E410046CB3F /* MonsterData.csv in Resources */ = {isa = PBXBuildFile; fileRef = F6C48E062B1E4E410046CB3F /* MonsterData.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,7 +99,7 @@
 		F6C48DF82B124BB20046CB3F /* MonsterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterProtocol.swift; sourceTree = "<group>"; };
 		F6C48E002B1BA4FD0046CB3F /* maou_se_magical23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_magical23.mp3; sourceTree = "<group>"; };
 		F6C48E012B1BA4FD0046CB3F /* maou_se_magical09.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = maou_se_magical09.mp3; sourceTree = "<group>"; };
-		F6C48E042B1E45E80046CB3F /* MonsterData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MonsterData.csv; path = ../../../GameSample/bouken/MonsterData.csv; sourceTree = "<group>"; };
+		F6C48E062B1E4E410046CB3F /* MonsterData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MonsterData.csv; path = ../../../GameSample/bouken/MonsterData.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +183,7 @@
 				F6B7A4DE2AF3F5E2004F6A0F /* GaugeView.swift */,
 				F6B7A4E02AF3FC18004F6A0F /* GaugeViewProtocol.swift */,
 				F6AEF08F2B067B3800C44ECB /* Audio.swift */,
-				F6C48E042B1E45E80046CB3F /* MonsterData.csv */,
+				F6C48E062B1E4E410046CB3F /* MonsterData.csv */,
 				F6C48E012B1BA4FD0046CB3F /* maou_se_magical09.mp3 */,
 				F6C48E002B1BA4FD0046CB3F /* maou_se_magical23.mp3 */,
 				F62DB0992B0EF9C60018FD89 /* maou_se_8bit12.mp3 */,
@@ -255,7 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6C48E052B1E45E80046CB3F /* MonsterData.csv in Resources */,
+				F6C48E072B1E4E410046CB3F /* MonsterData.csv in Resources */,
 				F6AEF0992B06898700C44ECB /* maou_se_battle19.mp3 in Resources */,
 				F6C48E022B1BA4FE0046CB3F /* maou_se_magical23.mp3 in Resources */,
 				F62DB0982B0EF7C50018FD89 /* maou_se_battle16.mp3 in Resources */,

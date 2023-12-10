@@ -218,6 +218,37 @@ final class DisplayView: UIView {
         })
     }
     
+    func monsterEventPoison(){
+        self.textButton.isEnabled = false
+        self.audio.playerAttack()
+        
+        UIView.animateKeyframes(withDuration: 0.3, delay: 0.0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.33, animations: {
+                self.monsterImageView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.33, relativeDuration: 0.66, animations: {
+                self.monsterImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }, completion: { _ in
+            
+            // 改修予定
+            UIView.animate(withDuration: 0.3, delay: 0.5, animations: {
+                self.monsterImageView.alpha = 0.3
+            }, completion: { _ in
+                self.audio.monsterDeath()
+                UIView.animate(withDuration: 0.7, animations: {
+                    self.monsterImageView.alpha = 0
+                    self.monsterImageView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                }, completion: { _ in
+                    self.monsterImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    self.animateCompletion(true)
+                })
+            })
+        })
+
+    }
+    
     func animateCompletion(_ bool:Bool){
         self.textButton.isEnabled = true
     }

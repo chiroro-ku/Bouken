@@ -96,6 +96,9 @@ extension MainViewController: ViewProtocol {
         case .system(.last):
             self.dismiss(animated: true)
             break
+        case .system(.load):
+            self.gaugeView.load()
+            break
         case .animate(.monster(.respawn)):
             self.displayView.monsterRespawnAnimate()
             self.atttackButton.isEnabled = true
@@ -127,6 +130,11 @@ extension MainViewController: ViewProtocol {
                 self.atttackButton.isEnabled = false
                 self.escapeButton.isEnabled = false
                 self.displayView.monsterEventEscape()
+            case "毒":
+                self.atttackButton.isEnabled = false
+                self.escapeButton.isEnabled = false
+                self.displayView.monsterEventPoison()
+                break
             default:
                 break
             }
