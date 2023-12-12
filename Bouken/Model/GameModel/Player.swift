@@ -46,4 +46,10 @@ class Player{
         self.maxHP += 10
         self.hp += 30
     }
+    
+    func levelUP(value: Int){
+        for _ in 0..<value{
+            self.levelUP()
+        }
+    }
 }

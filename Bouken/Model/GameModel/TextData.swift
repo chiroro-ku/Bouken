@@ -106,6 +106,9 @@ class TextData{
                     text = "\(self.getPlayerName())は攻撃した！,\(self.getMonsterName())は反撃してきた！,\(monster.damege) ダメージを受けた,\(self.getPlayerName())は逃げ出した…"
                 }
                 break
+            case "経験値UP":
+                text = "さらにレベルアップした！"
+                break
             default:
                 break
             }

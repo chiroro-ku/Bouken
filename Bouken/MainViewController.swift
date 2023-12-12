@@ -135,6 +135,10 @@ extension MainViewController: ViewProtocol {
                 self.escapeButton.isEnabled = false
                 self.displayView.monsterEventPoison()
                 break
+            case "経験値UP":
+                self.audio.playerLevelUP()
+                self.loadPlayer()
+                break
             default:
                 break
             }

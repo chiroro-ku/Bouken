@@ -45,7 +45,7 @@ class Event{
             self.monsterList.append(monster)
         }
          */
-        if let monster = self.monsterData.getMonster(name: "ポイズンキノコ") {
+        if let monster = self.monsterData.getMonster(name: "ゴールド骨") {
             self.monsterList.append(monster)
         }
     }
@@ -73,14 +73,20 @@ class Event{
         self.textList[index].event = event
     }
     
-    func append(event: EventType, load: Bool = false, top: Bool = false){
-        if top {
-            self.eventList = [event] + self.eventList
-        }else{
+    func append(event: EventType, load: Bool = false, top: Bool = false, next: Bool = false){
+        if !load && !top && !next {
             self.eventList.append(event)
         }
+        if top {
+            self.eventList = [event] + self.eventList
+        }
         if load {
+            self.eventList.append(event)
             self.loadEvent()
+        }
+        if next {
+            let first = self.eventList.removeFirst()
+            self.eventList = [first] + [event] + self.eventList
         }
     }
     
@@ -236,6 +242,16 @@ extension Event: MonsterProtocol{
                 break
             }
             break
+        case "経験値UP":
+            switch nextEvent{
+            case .player(.levelUP):
+                self.append(event: .monster(.event), next: true)
+                bool = true
+                break
+            default:
+                break
+            }
+            break
         default:
             break
         }
@@ -278,7 +294,7 @@ extension Event: MonsterProtocol{
             break
         case "毒":
             let player = self.model.player
-            self.model.monster?.takeAttack(player: player, bool: true)
+            self.model.monster?.takeAttack(player: player)
             if monster.death {
                 guard let eventValue = self.model.monster?.eventValue, let damege = Int(eventValue) else{
                     return
@@ -297,6 +313,15 @@ extension Event: MonsterProtocol{
             }
             let nextEvent: [EventType] = [.player(.walk), .monster(.respawn)]
             self.append(eventList: nextEvent)
+            break
+        case "経験値UP":
+            guard let eventValue = self.model.monster?.eventValue, let levelUPValue = Int(eventValue) else{
+                return
+            }
+            self.model.player.levelUP(value: levelUPValue)
+            let text = self.textData.getText(event: .monster(.event))
+            self.append(text: text)
+            self.append(index: 0, event: .animate(.monster(.event)))
             break
         default:
             break
