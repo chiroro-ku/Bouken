@@ -10,7 +10,7 @@ import Foundation
 class Event{
     
     private var textData = TextData()
-    private var monsterData = MonsterData()
+    private var monsterData = BoukenMonsterData()
     
     private var textList: [GameText]
     private var eventList: [EventType]
@@ -26,28 +26,10 @@ class Event{
         self.textList = []
         self.eventList = []
         self.monsterList = []
-//        self.textData.model = self.model
         
         self.monsterData.delegete = self
-        
-        /*
-        if let monster = self.monsterData.getMonster(name: "水ゴースト") {
-            self.monsterList.append(monster)
-        }
-         */
-        /*
-        if let monster = self.monsterData.getMonster(name: "ム゛▼イ゛マ゛ゃ") {
-            self.monsterList.append(monster)
-        }
-         */
-        /*
-        if let monster = self.monsterData.getMonster(name: "ワンコ") {
-            self.monsterList.append(monster)
-        }
-         */
-        if let monster = self.monsterData.getMonster(name: "ゴールド骨") {
-            self.monsterList.append(monster)
-        }
+
+        self.monsterList = self.monsterData.getTypeMonsterList(less: 60)
     }
     
     private func playerTakeDamege(damege: Int){
@@ -71,6 +53,18 @@ class Event{
     
     private func append(index: Int, event: EventType){
         self.textList[index].event = event
+    }
+    
+    private func append(monsterName: String){
+        if monsterName == "_"{
+
+        }else{
+            if let nextMonster = self.monsterData.getMonster(name: monsterName) {
+                self.monsterList.append(nextMonster)
+                print(nextMonster.name)
+            }
+        }
+        return
     }
     
     func append(event: EventType, load: Bool = false, top: Bool = false, next: Bool = false){
@@ -121,6 +115,12 @@ class Event{
             let text = "no text"
             self.append(text: text)
             self.append(index: 0, event: .system(.last))
+            
+            let maxLv = UserDefaults.standard.integer(forKey: "maxLv")
+            if maxLv < self.model.player.lv{
+                UserDefaults.standard.set(self.model.player.lv, forKey: "maxLv")
+            }
+            
             break
         case .player(.walk):
             self.model.setMonster(monster: nil)
@@ -134,6 +134,8 @@ class Event{
                 return
             }
             if monster.death {
+                let nextMonsterName = monster.next
+                self.append(monsterName: nextMonsterName)
                 self.append(event: .player(.levelUP))
             }else{
                 self.playerTakeDamege(damege: monster.damege)
@@ -158,6 +160,11 @@ class Event{
             let text = self.textData.getText(event: event)
             self.append(text: text)
             self.append(index: 0, event: .animate(.player(.levelUP)))
+            if let appendMonster = self.monsterData.getRandomTypeMonster(){
+                self.monsterList.append(appendMonster)
+                print(appendMonster.name)
+            }
+            
             break
         case .player(.death):
             let text = self.textData.getText(event: event)

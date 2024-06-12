@@ -6,68 +6,74 @@
 //
 
 import Foundation
+import RealmSwift
 
-class MonsterData: ProfileData{
+class MonsterData {
     
-    private var list: [Monster] = []
-    
-    var delegete: MonsterProtocol?{
-        didSet{
-            for monster in self.list{
-                monster.delegete = self.delegete
-            }
-        }
-    }
+    private let fileName = "MonsterData"
     
     init() {
-        super.init(fileName: "MonsterData")
-        for aData in self.data {
-            let monster = Monster(data: aData)
-            monster.delegete = self.delegete
-            self.list.append(monster)
+        let realm = try! Realm()
+        let monsters = realm.objects(Monster.self)
+        if !monsters.isEmpty{
+            return
         }
-    }
-    
-    func getRandomMonster() -> Monster{
-        guard let monster = self.list.randomElement(), let nextMonster = self.list.randomElement() else {
-            return Monster()
+        
+        guard let path = Bundle.main.path(forResource: self.fileName, ofType: "csv") else {
+            print("file error")
+            return
         }
-        if monster.ration < nextMonster.ration{
-            return nextMonster
+        
+        var allData = ""
+        var lineData: [String] = []
+        do{
+            allData = try String(contentsOfFile: path, encoding: .utf8)
+            lineData = allData.components(separatedBy: "\r\n")
+        }catch let error as NSError {
+            print("\(error)")
         }
-        return monster
-    }
-    
-    func getMonster(name: String) -> Monster?{
-        for monster in self.list {
-            if monster.name == name{
-                return monster
+        lineData.removeFirst()
+//            self.data.removeLast()
+        
+        for data in lineData {
+            
+            let prameterData = data.components(separatedBy: ",")
+            let monster = Monster()
+            monster.id = Int(prameterData[0]) ?? 0
+            monster.rank = Int(prameterData[1]) ?? 0
+            monster.name = prameterData[2]
+            monster.ration = Int(prameterData[3]) ?? 0
+            monster.damege = Int(prameterData[4]) ?? 0
+            monster.imageName = prameterData[5]
+            monster.text = prameterData[6]
+            monster.event = prameterData[7]
+            monster.eventValue = prameterData[8]
+            monster.type = prameterData[9]
+            monster.next = prameterData[10]
+            monster.level = Int(prameterData[11]) ?? 0
+            
+            try! realm.write{
+                realm.add(monster)
             }
         }
-        print("error MonsterData.getMonster() name: " + name)
-        return nil
     }
     
-    func getFirstMonsterList() -> [Monster]{
-        var monsters: [Monster] = []
-        for monster in self.list {
-            let typeName = monster.type
-            for aMonster in monsters{
-                if aMonster.name == typeName{
-                    continue
-                }
-            }
-            monsters.append(self.getMonster(name: typeName) ?? Monster())
-            print(typeName)
+    func get(name: String) -> [Monster]{
+        let realm = try! Realm()
+        let monsters = realm.objects(Monster.self).where{
+            $0.name == name
         }
-        monsters.removeFirst()
-        return monsters
+        if monsters.count > 1{
+            print("MonsterData - getMonster(\(name))")
+        }
+        return Array(monsters)
     }
     
-    func getFirstMonsterList(ration: Int) -> [Monster]{
-        var monsters: Set<Monster> = []
-        for aMonster in self.list{
-            if
+    func get(level: Int) -> [Monster]{
+        let realm = try! Realm()
+        let monsters = realm.objects(Monster.self).where{
+            $0.level == level
         }
+        return Array(monsters)
     }
 }

@@ -10,6 +10,8 @@ class Monster{
     
     private var eventFlag = false
     
+    private(set) var id: Int
+    private(set) var rank: Int
     private(set) var name: String
     private(set) var ration: Int
     private(set) var damege: Int
@@ -17,30 +19,40 @@ class Monster{
     private(set) var text: String
     private(set) var event: String
     private(set) var eventValue: String
+    private(set) var type: String
+    private(set) var next: String
     
     private(set) var death: Bool = false
     
     var delegete: MonsterProtocol?
     
     init() {
+        self.id = 0
+        self.rank = 0
         self.name = "no name"
-        self.ration = 0
+        self.ration = 999
         self.damege = 0
         self.image = "no image"
         self.text = "no text"
         self.event = "no event"
         self.eventValue = "no value"
+        self.type = "no type"
+        self.next = "no next"
     }
     
     init(data: String) {
         let datas = data.components(separatedBy: ",")
-        self.name = datas[0]
-        self.ration = Int(datas[1]) ?? 0
-        self.damege = Int(datas[2]) ?? 0
-        self.image = datas[3]
-        self.text = datas[4]
-        self.event = datas[5]
-        self.eventValue = datas[6]
+        self.id = Int(datas[0]) ?? 0
+        self.rank = Int(datas[1]) ?? 0
+        self.name = datas[2]
+        self.ration = Int(datas[3]) ?? 0
+        self.damege = Int(datas[4]) ?? 0
+        self.image = datas[5]
+        self.text = datas[6]
+        self.event = datas[7]
+        self.eventValue = datas[8]
+        self.type = datas[9]
+        self.next = datas[10]
     }
     
     func setRation(ration: Int){
